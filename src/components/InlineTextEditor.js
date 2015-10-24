@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
-import { OutsideClickDetector } from '../';
+import OutsideClickDetector from './OutsideClickDetector';
 import styles from './InlineTextEditor.scss';
 
 const KEYS = {

@@ -6,6 +6,11 @@ UI components for React
 npm install aluminium --save
 ```
 
+## Build
+```
+npm run build
+```
+
 ## Components
 
 - Icon
