@@ -1,5 +1,5 @@
 .textContainer {
-  padding: 5px 0;
+  padding: 5px;
 
   &:hover {
     cursor: text;
@@ -8,7 +8,7 @@
 
 .input, .textContainer:hover {
   border: 1px solid #ccc;
-  margin: 0 -5px;
+  margin: 0;
   padding: 4px;
   width: 100%;
 }

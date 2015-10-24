@@ -254,27 +254,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'renderText',
 	    value: function renderText() {
-	      if (this.props.value) {
-	        return _react2['default'].createElement(
-	          'div',
-	          { className: _InlineTextEditorScss2['default'].textContainer, onClick: this.onTextClick.bind(this) },
-	          _react2['default'].createElement(
-	            'div',
-	            null,
-	            this.props.value
-	          )
-	        );
-	      } else {
-	        return _react2['default'].createElement(
-	          'div',
-	          { className: _InlineTextEditorScss2['default'].textContainer, onClick: this.onTextClick.bind(this) },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: _InlineTextEditorScss2['default'].placeholder },
-	            this.props.placeholder
-	          )
-	        );
-	      }
+	      var text = this.props.value ? _react2['default'].createElement(
+	        'div',
+	        null,
+	        this.props.value
+	      ) : _react2['default'].createElement(
+	        'div',
+	        { className: _InlineTextEditorScss2['default'].placeholder },
+	        this.props.placeholder
+	      );
+
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: _InlineTextEditorScss2['default'].textContainer, onClick: this.onTextClick.bind(this) },
+	        text
+	      );
 	    }
 	  }, {
 	    key: 'onOutsideClick',
@@ -302,9 +296,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }, {
 	    key: 'onTextClick',
-	    value: function onTextClick() {
+	    value: function onTextClick(event) {
 	      var _this = this;
 
+	      event.preventDefault();
 	      this.setState({ editMode: true, editValue: this.props.value });
 
 	      _underscore2['default'].defer(function () {
@@ -431,7 +426,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".InlineTextEditor_textContainer_ixydR {\n  padding: 5px 0; }\n  .InlineTextEditor_textContainer_ixydR:hover {\n    cursor: text; }\n\n.InlineTextEditor_input_3XZT3, .InlineTextEditor_textContainer_ixydR:hover {\n  border: 1px solid #ccc;\n  margin: 0 -5px;\n  padding: 4px;\n  width: 100%; }\n\n.InlineTextEditor_placeholder_ZZ5PQ {\n  color: #999; }\n", ""]);
+	exports.push([module.id, ".InlineTextEditor_textContainer_ixydR {\n  padding: 5px; }\n  .InlineTextEditor_textContainer_ixydR:hover {\n    cursor: text; }\n\n.InlineTextEditor_input_3XZT3, .InlineTextEditor_textContainer_ixydR:hover {\n  border: 1px solid #ccc;\n  margin: 0;\n  padding: 4px;\n  width: 100%; }\n\n.InlineTextEditor_placeholder_ZZ5PQ {\n  color: #999; }\n", ""]);
 
 	// exports
 	exports.locals = {

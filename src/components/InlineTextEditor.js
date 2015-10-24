@@ -33,19 +33,15 @@ export default class InlineTextEditor extends React.Component {
   }
 
   renderText() {
-    if (this.props.value) {
-      return (
-        <div className={styles.textContainer} onClick={::this.onTextClick}>
-          <div>{this.props.value}</div>
-        </div>
-      );
-    } else {
-      return (
-        <div className={styles.textContainer} onClick={::this.onTextClick}>
-          <div className={styles.placeholder}>{this.props.placeholder}</div>
-        </div>
-      );
-    }
+    const text = this.props.value ?
+      <div>{this.props.value}</div> :
+      <div className={styles.placeholder}>{this.props.placeholder}</div>;
+
+    return (
+      <div className={styles.textContainer} onClick={::this.onTextClick}>
+        {text}
+      </div>
+    );
   }
 
   onOutsideClick() {
@@ -69,7 +65,8 @@ export default class InlineTextEditor extends React.Component {
     }
   }
 
-  onTextClick() {
+  onTextClick(event) {
+    event.preventDefault();
     this.setState({ editMode: true, editValue: this.props.value });
 
     _.defer(() => {
