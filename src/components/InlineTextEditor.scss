@@ -1,3 +1,5 @@
+@import "../../node_modules/bourbon/app/assets/stylesheets/bourbon";
+
 .textContainer {
   padding: 5px;
 
@@ -14,5 +16,7 @@
 }
 
 .placeholder {
+  @include ellipsis;
   color: #999;
+  vertical-align: top;
 }
