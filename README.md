@@ -13,6 +13,4 @@ npm run build
 
 ## Components
 
-- Icon
-- InlineTextEditor
 - OutsideClickDetector
