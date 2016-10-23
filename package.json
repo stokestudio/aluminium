@@ -7,18 +7,18 @@
     "build": "./node_modules/webpack/bin/webpack.js",
     "watch": "./node_modules/webpack/bin/webpack.js --watch"
   },
-  "repository": "mrwade/aluminium",
+  "repository": "stokestudio/aluminium",
   "keywords": [
     "react",
     "utility",
     "components"
   ],
-  "author": "Kevin Wade <kevinrwade@gmail.com>",
+  "author": "Kevin Wade <kevin@stokestudio.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mrwade/aluminium/issues"
+    "url": "https://github.com/stokestudio/aluminium/issues"
   },
-  "homepage": "https://github.com/mrwade/aluminium#readme",
+  "homepage": "https://github.com/stokestudio/aluminium#readme",
   "peerDependencies": {
     "react": "^0.14.0",
     "underscore": "^1.8.3"
