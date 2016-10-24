@@ -1,14 +1,13 @@
 # aluminium
-UI components for React
+Utility components for React
 
 ## Install
 ```
+yarn add aluminium
+```
+or
+```
 npm install aluminium --save
-```
-
-## Build
-```
-npm run build
 ```
 
 ## Components
