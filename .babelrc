@@ -1,3 +1,11 @@
 {
-  stage: 0
+  "plugins": [
+    "lodash",
+    "transform-function-bind"
+  ],
+  "presets": [
+    ["es2015", { "modules": false }],
+    "stage-2",
+    "react"
+  ]
 }

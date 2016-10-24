@@ -13,4 +13,5 @@ npm run build
 
 ## Components
 
+- FormHandler
 - OutsideClickDetector
