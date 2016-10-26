@@ -13,4 +13,5 @@ npm install aluminium --save
 ## Components
 
 - FormHandler
+- FormSubmitter
 - OutsideClickDetector

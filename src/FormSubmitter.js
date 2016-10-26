@@ -2,6 +2,11 @@ import { map } from 'lodash';
 import React, { PropTypes } from 'react';
 
 class FormSubmitter extends React.Component {
+  static propTypes = {
+    data: PropTypes.object.isRequired,
+    url: PropTypes.string.isRequired
+  }
+
   // Public
   submit() {
     this.refs.form.submit();
@@ -19,10 +24,5 @@ class FormSubmitter extends React.Component {
     );
   }
 }
-
-FormSubmitter.propTypes = {
-  data: PropTypes.object.isRequired,
-  url: PropTypes.string.isRequired
-};
 
 export default FormSubmitter;

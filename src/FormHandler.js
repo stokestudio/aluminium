@@ -1,8 +1,10 @@
 import { identity } from 'lodash';
 import React, { PropTypes } from 'react';
-import FormValidations from './FormValidations';
+import FormValidation from './FormValidation';
 
-const { isDataValid, runFieldValidations } = FormValidations;
+const { isDataValid, runFieldValidations } = FormValidation;
+
+const ENTER_KEY = 13;
 
 class FieldHandler extends React.Component {
   static propTypes = {
@@ -12,12 +14,14 @@ class FieldHandler extends React.Component {
     displayIfInvalid: PropTypes.bool,
     name: PropTypes.string.isRequired,
     onValueChange: PropTypes.func.isRequired,
+    submitOnEnter: PropTypes.bool.isRequired,
     validations: PropTypes.arrayOf(PropTypes.func),
     valueParser: PropTypes.func
   }
 
   static defaultProps = {
     displayFormatter: identity,
+    submitOnEnter: true,
     valueParser: identity
   }
 
@@ -38,24 +42,28 @@ class FieldHandler extends React.Component {
     const { hasBlurred } = this.state;
 
     const value = data[name];
-    const isValid = runFieldValidations(value, validations).valid;
+    const { valid: isValid, message: errorMessage } =
+      runFieldValidations(value, validations);
 
     const api = {
       displayInvalid: (displayIfInvalid || hasBlurred) && !isValid,
       displayValue: displayFormatter(value) || '',
-      isValid: isValid,
       onBlur: () => this.setState({ hasBlurred: true }),
       onChange: ::this.onChange,
+      onKeyUp: ::this.onKeyUp,
       onSubmit,
       onValueChange: value => onValueChange(name, valueParser(value)),
       value: data[name]
     };
+
+    if (api.displayInvalid) api.errorMessage = errorMessage;
 
     return children({
       ...api,
       inputProps: {
         onBlur: api.onBlur,
         onChange: api.onChange,
+        onKeyUp: api.onKeyUp,
         value: api.displayValue
       }
     });
@@ -65,6 +73,15 @@ class FieldHandler extends React.Component {
     const { name, onValueChange, valueParser } = this.props;
     const { value } = event.target;
     onValueChange(name, valueParser(value));
+  }
+
+  onKeyUp(event) {
+    if (this.props.submitOnEnter && event.keyCode === ENTER_KEY) {
+      // Hides keyboard on iOS
+      event.target.blur();
+
+      this.props.onSubmit();
+    }
   }
 }
 
