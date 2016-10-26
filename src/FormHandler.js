@@ -85,6 +85,11 @@ class FieldHandler extends React.Component {
   }
 }
 
+const SubmitHandler = ({ children, disabled, onSubmit }) => children({
+  disabled,
+  submit: onSubmit
+});
+
 class FormHandler extends React.Component {
   static propTypes = {
     data: PropTypes.object,
@@ -101,14 +106,20 @@ class FormHandler extends React.Component {
       <FieldHandler {...inputProps}
         data={this.state.data}
         displayIfInvalid={this.state.displayInvalidFields}
-        validations={props.validations[inputProps.name]}
+        validations={this.props.validations[inputProps.name]}
         onSubmit={::this.onSubmit}
         onValueChange={::this.onValueChange} />;
+
+    this.SubmitHandler = submitProps =>
+      <SubmitHandler {...submitProps}
+        disabled={!isDataValid(this.state.data, this.props.validations)}
+        onSubmit={::this.onSubmit} />;
   }
 
   render() {
     return this.props.children({
-      FieldHandler: this.FieldHandler
+      FieldHandler: this.FieldHandler,
+      SubmitHandler: this.SubmitHandler
     });
   }
 
