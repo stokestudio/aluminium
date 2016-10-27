@@ -1,4 +1,4 @@
-import { map } from 'lodash';
+import { isUndefined, map } from 'lodash';
 import React, { PropTypes } from 'react';
 
 class FormSubmitter extends React.Component {
@@ -18,7 +18,8 @@ class FormSubmitter extends React.Component {
     return (
       <form ref="form" method="POST" action={url}>
         {map(data, (value, key) =>
-          <input key={key} type="hidden" name={key} value={value} />
+          !isUndefined(value) &&
+            <input key={key} type="hidden" name={key} value={value} />
         )}
       </form>
     );
