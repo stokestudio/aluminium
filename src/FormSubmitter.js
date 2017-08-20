@@ -1,5 +1,6 @@
 import { isUndefined, map } from 'lodash';
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class FormSubmitter extends React.Component {
   static propTypes = {
